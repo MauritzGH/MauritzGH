@@ -1,1 +1,98 @@
+<head>
+  <title>First Page</title>
+</head>
 
+<style>
+.field-container {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.input-label {
+width: 100px;
+margin-right: 10px;
+}
+
+.input-field {
+flex-grow: 1;
+}
+</style>
+
+<form id="form">
+<div class="field-container">
+<label for="number" class="input-label">Number of teams:</label>
+<select id="number" name="number" class="input-field">
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>
+</div>
+</form>
+
+<div id="inputs"></div>
+
+<button id="continue-btn" style="display: none;">Continue</button>
+
+<script>
+const form = document.getElementById('form');
+const inputContainer = document.getElementById('inputs');
+const continueBtn = document.getElementById('continue-btn');
+
+form.addEventListener('change', function() {
+// Get the selected number from the dropdown field
+const number = this.number.value;
+
+// Remove existing input fields and labels
+inputContainer.innerHTML = '';
+
+// Create the specified number of input fields and labels
+for (let i = 1; i <= number; i++) {
+  // Create a div to contain the input field and label
+  const fieldContainer = document.createElement('div');
+  fieldContainer.classList.add('field-container');
+
+  // Create the label
+  const label = document.createElement('label');
+  label.innerHTML = `Team ${i}`;
+  label.classList.add('input-label');
+  fieldContainer.appendChild(label);
+
+  // Create the input field
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.classList.add('input-field');
+  input.addEventListener('blur', checkFields);
+  fieldContainer.appendChild(input);
+
+  // Add the input field and label to the container
+  inputContainer.appendChild(fieldContainer);
+}
+});
+
+function checkFields() {
+const inputs = inputContainer.querySelectorAll('.input-field');
+let filled = true;
+for (let input of inputs) {
+  if (input.value === '') {
+    filled = false;
+    break;
+  }
+}
+if (filled) {
+  continueBtn.style.display = 'block';
+} else {
+  continueBtn.style.display = 'none';
+}
+}
+
+continueBtn.addEventListener('click', function() {
+  // Add code here to handle the continue button being clicked
+});
+</script>
