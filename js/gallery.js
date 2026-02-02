@@ -1,15 +1,47 @@
 /**
  * Photography Portfolio - Gallery Functionality
- * Handles filtering, lightbox, and navigation
+ * Handles building gallery, filtering, lightbox, and navigation
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all components
+    // Build gallery from photos.js, then initialize components
+    buildGallery();
     initMobileMenu();
     initHeaderScroll();
     initGalleryFilter();
     initLightbox();
 });
+
+/**
+ * Build Gallery from MY_PHOTOS array (defined in photos.js)
+ */
+function buildGallery() {
+    const galleryGrid = document.getElementById('gallery-grid');
+    if (!galleryGrid || typeof MY_PHOTOS === 'undefined') return;
+
+    // Clear any existing content
+    galleryGrid.innerHTML = '';
+
+    // Create gallery items from photo list
+    MY_PHOTOS.forEach(photo => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.dataset.category = photo.category;
+
+        // Capitalize category for display
+        const categoryDisplay = photo.category.charAt(0).toUpperCase() + photo.category.slice(1);
+
+        item.innerHTML = `
+            <img src="${photo.src}" alt="${photo.title}" loading="lazy">
+            <div class="gallery-overlay">
+                <h3>${photo.title}</h3>
+                <p>${categoryDisplay}</p>
+            </div>
+        `;
+
+        galleryGrid.appendChild(item);
+    });
+}
 
 /**
  * Mobile Menu Toggle
@@ -107,7 +139,7 @@ function initLightbox() {
 
     // Update visible items based on current filter
     function updateVisibleItems() {
-        visibleItems = Array.from(galleryItems).filter(
+        visibleItems = Array.from(document.querySelectorAll('.gallery-item')).filter(
             item => !item.classList.contains('hidden')
         );
     }
@@ -136,10 +168,7 @@ function initLightbox() {
         const title = item.querySelector('h3');
         const category = item.querySelector('p');
 
-        // Get high-res version (replace w=600 with w=1920)
-        const highResSrc = img.src.replace(/w=\d+/, 'w=1920').replace(/h=\d+/, 'h=1280');
-
-        lightboxImg.src = highResSrc;
+        lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
         lightboxTitle.textContent = title ? title.textContent : '';
         lightboxCategory.textContent = category ? category.textContent : '';
@@ -234,28 +263,3 @@ function initLightbox() {
         }
     }
 }
-
-/**
- * Lazy Loading Enhancement
- * Uses Intersection Observer for better performance
- */
-function initLazyLoading() {
-    const images = document.querySelectorAll('.gallery-item img[loading="lazy"]');
-
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        images.forEach(img => imageObserver.observe(img));
-    }
-}
-
-// Initialize lazy loading
-initLazyLoading();
