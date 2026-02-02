@@ -46,106 +46,8 @@
                 <button class="filter-btn" data-filter="portraits">Portraits</button>
             </div>
 
-            <div class="gallery-grid">
-                <!-- Nature Photos -->
-                <div class="gallery-item" data-category="nature">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop" alt="Mountain landscape at sunset" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Alpine Sunset</h3>
-                        <p>Nature</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="nature">
-                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop" alt="Sunlight through forest trees" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Forest Light</h3>
-                        <p>Nature</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="nature">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Calm lake reflection" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Mirror Lake</h3>
-                        <p>Nature</p>
-                    </div>
-                </div>
-
-                <!-- Urban Photos -->
-                <div class="gallery-item" data-category="urban">
-                    <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&h=400&fit=crop" alt="City skyline at night" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>City Lights</h3>
-                        <p>Urban</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="urban">
-                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&h=400&fit=crop" alt="Urban street scene" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Street Stories</h3>
-                        <p>Urban</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="urban">
-                    <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=600&h=400&fit=crop" alt="Modern architecture" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Modern Lines</h3>
-                        <p>Urban</p>
-                    </div>
-                </div>
-
-                <!-- Travel Photos -->
-                <div class="gallery-item" data-category="travel">
-                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop" alt="Paris Eiffel Tower" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Paris Dreams</h3>
-                        <p>Travel</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="travel">
-                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&h=400&fit=crop" alt="Venice canals" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Venice Waters</h3>
-                        <p>Travel</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="travel">
-                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&h=400&fit=crop" alt="Japanese temple" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Kyoto Serenity</h3>
-                        <p>Travel</p>
-                    </div>
-                </div>
-
-                <!-- Portrait Photos -->
-                <div class="gallery-item" data-category="portraits">
-                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=400&fit=crop" alt="Portrait in natural light" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Natural Light</h3>
-                        <p>Portraits</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="portraits">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Candid portrait" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Candid Moments</h3>
-                        <p>Portraits</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="portraits">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=400&fit=crop" alt="Studio portrait" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Studio Session</h3>
-                        <p>Portraits</p>
-                    </div>
-                </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Photos are loaded automatically from js/photos.js -->
             </div>
         </div>
     </section>
@@ -203,6 +105,7 @@
         </div>
     </div>
 
+    <script src="js/photos.js"></script>
     <script src="js/gallery.js"></script>
 </body>
 </html>
